@@ -1,6 +1,12 @@
+from idlelib.autocomplete import FORCE
+
 from funcions.info_ip import consultar_ip
-from textos.textos import titol, menu_principal, text_opcio, text_ip
-from textos.errors import error_valor_incorrecte, error_ip
+from funcions.llistat_info_ip import consultar_llistat_ips
+from textos.textos import titol, menu_principal, text_opcio, text_ip, ruta_csv
+from textos.errors import  error_ip, error_fitxer_no_existeix, error_valor_incorrecte
+from colorama import Fore, Style, init
+
+init(autoreset=True)
 
 def info_ip():
 
@@ -16,11 +22,18 @@ def info_ip():
             print(error_ip())
             break
 
-def info_url():
-    print("Funcionalitat pendent d'implementar.")
+def llistat_info_ip():
+    while True:
+        try:
+            ruta = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + ruta_csv())
 
-def info_domini():
-    print("Funcionalitat pendent d'implementar.")
+            if ruta.strip() == "0":
+                break
+
+            consultar_llistat_ips(ruta)
+        except KeyboardInterrupt:
+            print(error_valor_incorrecte())
+            break
 
 def main():
     while True:
@@ -37,9 +50,7 @@ def main():
         elif opcio == 1:
             info_ip()
         elif opcio == 2:
-            info_url()
-        elif opcio == 3:
-            info_domini()
+            llistat_info_ip()
         else:
             print(error_valor_incorrecte())
 
