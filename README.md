@@ -1,1 +1,1 @@
-# 🔐 BlueTeam - Eina d’Anàlisi d’IPs, URLs i Dominis
+# 🔐 BlueTeam - Eina d’Anàlisi d’IPs
